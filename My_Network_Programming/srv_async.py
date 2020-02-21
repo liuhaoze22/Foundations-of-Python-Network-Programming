@@ -84,5 +84,5 @@ def server(listener, certfile):
 if __name__ == '__main__':
     address = zen_utils.parse_command_line('')
     listener = zen_utils.creat_srv_socket(address)
-    certfile = '/home/liu/code/Python_Network_Programming/My_Network_Programming/localhost.pem'
+    certfile = '/home/liu/code/Foundations-of-Python-Network-Programming/My_Network_Programming/localhost.pem'
     server(listener, certfile)

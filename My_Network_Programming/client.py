@@ -23,5 +23,5 @@ if __name__ == '__main__':
     parser.add_argument('-p', metavar='port', type=int, default=1060, help='TCP port (default 1060)')
     args = parser.parse_args()
     address = (args.host, args.p)
-    cafile = '/home/liu/code/Python_Network_Programming/My_Network_Programming/ca.crt'
+    cafile = '/home/liu/code/Foundations-of-Python-Network-Programming/My_Network_Programming/ca.crt'
     client(address, cafile)
