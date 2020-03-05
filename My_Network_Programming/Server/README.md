@@ -10,5 +10,8 @@ srv_async.py是异步服务器。同样使用localhost.pem证书
     因为需要要用memcache缓存，需要安装memcache，使用'pip install python3-memcached'命令安装
 
     1.使用多线程服务器：
-    运行srv_threaded.py，运行时在命令行输入相应主机ip地址
+    运行srv_threaded.py，运行时在命令行输入相应主机ip地址，默认端口1060
     如：
+    ![Image text](https://github.com/liuhaoze22/Foundations-of-Python-Network-Programming/blob/master/My_Network_Programming/Server/img-folder/srv_threaded.PNG)
+    运行clinet.py，运行时输入服务器的ip地址
+    如![Image text](https://github.com/liuhaoze22/Foundations-of-Python-Network-Programming/blob/master/My_Network_Programming/Server/img-folder/client.PNG)
