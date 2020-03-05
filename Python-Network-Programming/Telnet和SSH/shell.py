@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-# Foundations of Python Network Programming, Third Edition
-# https://github.com/brandon-rhodes/fopnp/blob/m/py3/chapter16/shell.py
-# A simple shell, so you can try running commands at a prompt where no
-# characters are special (except that whitespace separates arguments).
+
 
 import subprocess
 

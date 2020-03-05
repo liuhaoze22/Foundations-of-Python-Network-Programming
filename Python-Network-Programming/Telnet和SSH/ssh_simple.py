@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-# Foundations of Python Network Programming, Third Edition
-# https://github.com/brandon-rhodes/fopnp/blob/m/py3/chapter16/ssh_simple.py
-# Using SSH like Telnet: connecting and running two commands
+
 
 import argparse, paramiko, sys
 
