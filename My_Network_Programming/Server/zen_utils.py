@@ -14,7 +14,14 @@ aphorisms = {b'1:Do one thing at a time,': b'and do well.',
             b'7:Kings go mad,': b'and the people suffer for it.',
             b'8:Knowledge is,': b'power.'}
 
-#用于读取命令行参数
+# parse_command_line()用于读取命令行参数。
+# creat_srv_socket()用于构造TCP的监听套接字，服务器通过使用监听套接字来接受连接请求。
+# ssl_context()创建TSL上下文对象。
+# handle_conversation()包含一个无限循环，来不断处理请求。
+# recv_until()用来接受客户端发送的数据，使用特殊字符来封帧。
+# get_answer()查看服务应返回的内容，先访问缓存看有没有相应数据，如果没有访问相应的字典。
+
+
 def parse_command_line(description):
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('host', help='')
@@ -23,7 +30,6 @@ def parse_command_line(description):
     address = (args.host, args.p)
     return address
 
-#创建TCP监听套接字
 def creat_srv_socket(address):
     hostname, port = address
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -32,13 +38,6 @@ def creat_srv_socket(address):
     sock.listen(32)
     print('监听：', sock.getsockname())
     return sock
-
-#创建TSL上下文对象
-def ssl_context(certfile, cafile = None):
-    context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH, cafile = cafile)
-    #上面cafile值为None，然后调用load_cert_chain()安装其他证书，就可以使用两种证书
-    context.load_cert_chain(certfile)
-    return context
 
 #不断通过监听套接字接受连接
 def accept_connections_forever(sock, certfile, cafile = None):
@@ -50,6 +49,13 @@ def accept_connections_forever(sock, certfile, cafile = None):
         #服务端使用参数server_side=True，通讯双方必须有一方是服务端
         ssl_sock = context.wrap_socket(raw_sock, server_side=True)
         handle_conversation(ssl_sock, address)
+
+#创建TSL上下文对象
+def ssl_context(certfile, cafile = None):
+    context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH, cafile = cafile)
+    #上面cafile值为None，然后调用load_cert_chain()安装其他证书，就可以使用两种证书
+    context.load_cert_chain(certfile)
+    return context
 
 #不断处理请求，并捕捉程序可能发生的错误
 def handle_conversation(sock, address):
@@ -65,6 +71,18 @@ def handle_conversation(sock, address):
     finally:
         sock.close()
 
+#接收信息，并用其中一种模式进行封帧
+def recv_until(sock, suffix):
+    message = sock.recv(1024)
+    if not message:
+        raise EOFError('sock closed')
+    while not message.endswith(suffix):
+        data = sock.recv(1024)
+        if not data:
+            raise IOError('received {!r} then socket closed'.format(message))
+        message += data
+    return message
+
 #使用memcache缓存
 mc = memcache.Client(['127.0.0.1:11211'])
 def get_answer(aphorism):
@@ -77,15 +95,3 @@ def get_answer(aphorism):
         else:
             mc.set('say:%s' % aphorism[0:1], value)
     return value
-
-#接收信息，并用其中一种模式进行封帧
-def recv_until(sock, suffix):
-    message = sock.recv(1024)
-    if not message:
-        raise EOFError('sock closed')
-    while not message.endswith(suffix):
-        data = sock.recv(1024)
-        if not data:
-            raise IOError('received {!r} then socket closed'.format(message))
-        message += data
-    return message
