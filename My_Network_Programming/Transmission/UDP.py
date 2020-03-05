@@ -24,8 +24,9 @@ def client(hosthome, port) :
     sock.connect((hosthome, port)) #使用connect()
     print('客户端地址： {}'.format(sock.getsockname()))
     delay = 0.1 #使用指针退避技术，通过这一技术重发数据包的频率越来越底
-    print('输入您要输入的数据: ')
-    text = input()
+    print('测试数据为: ')
+    text = '路漫漫其修远兮，吾将上下而求索'
+    print(text)
     data = text.encode('utf-16')
 
     while True :
