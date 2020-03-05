@@ -30,7 +30,7 @@ def client(hosthome, port) :
 
     while True :
         sock.send(data)
-        print('waiting up to {} seconds for a reply'.format(delay))
+        print('等待 {} 秒后重新发送'.format(delay))
         sock.settimeout(delay)
         try:
             data = sock.recv(MAX_BYTES)

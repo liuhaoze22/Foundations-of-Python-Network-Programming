@@ -1,5 +1,6 @@
 # Python-Network-Programming
 
-1. TCP.py文件是tcp通讯，使用长度前缀将每个数据块封帧
-2. srv_threaded.py是多线程服务器，使用memcache缓存， 并使用TSL加密，服务器使用locakhost.pem 客户端使用ca.crt证书。
-3. sev_async.py是异步服务器。
+此代码在ubuntu系统上运行，使用vs code开发工具
+
+Server是服务器代码
+Transmission是udp和tcp传输代码
