@@ -12,6 +12,7 @@ srv_async.py是异步服务器。同样使用localhost.pem证书
     1.使用多线程服务器：
     运行srv_threaded.py，运行时在命令行输入相应主机ip地址，默认端口1060
     如：
-    ![Image text](https://raw.githubusercontent.com/liuhaoze22/Foundations-of-Python-Network-Programming/master/My_Network_Programming/Server/img-folder/srv_threaded.PNG)
+![Image text](https://raw.githubusercontent.com/liuhaoze22/Foundations-of-Python-Network-Programming/master/My_Network_Programming/Server/img-folder/srv_threaded.PNG)
     运行clinet.py，运行时输入服务器的ip地址
-    如![Image text](https://raw.githubusercontent.com/liuhaoze22/Foundations-of-Python-Network-Programming/master/My_Network_Programming/Server/img-folder/client.PNG)
+    如!
+[Image text](https://raw.githubusercontent.com/liuhaoze22/Foundations-of-Python-Network-Programming/master/My_Network_Programming/Server/img-folder/client.PNG)
