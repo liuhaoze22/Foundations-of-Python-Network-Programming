@@ -1,3 +1,6 @@
+客户端希望服务器理解的多个问题作为字典aphorisms的健列出，对应的回答以字典值的形式存储
+例如:客户端发送‘1:Do one thing at a time,'  服务器返回'and do well.'
+
 zen_utils.py是作为一个服务器支持性模块，使用TLS加密传输和memcache缓存。由srv_threaded.py和srv_async.py导入。
 
 client.py是为测试服务器所写的客户端，使用ca.crt证书

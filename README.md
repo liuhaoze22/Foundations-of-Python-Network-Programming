@@ -1,1 +1,5 @@
 此代码在ubuntu系统上运行，使用vs code开发工具
+
+My_Network_Programming文件中内容是网络编程作业
+
+Python-Network-Programming文件中的代码为练习示例

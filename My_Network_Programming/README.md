@@ -1,4 +1,4 @@
 # Python-Network-Programming
 
-Server是服务器代码
-Transmission是udp和tcp传输代码
+Server是服务器代码,包含多线程服务器和异步服务器
+Transmission包含udp和tcp传输代码
