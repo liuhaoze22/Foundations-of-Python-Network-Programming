@@ -3,3 +3,5 @@
 My_Network_Programming文件中内容是网络编程作业
 
 Python-Network-Programming文件中的代码为练习示例
+
+ca.crt和localhost是TLS加密用的证书
